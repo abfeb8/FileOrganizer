@@ -1,5 +1,5 @@
 # FileOrganizer
-Thise script will organise all the different file types of *Target* direcory into sub folders.
+Thise script will organise all the different file types of *Target* directory into sub folders.
 
 ### Steps
 * Run the script
