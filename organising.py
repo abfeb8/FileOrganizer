@@ -9,10 +9,10 @@ class file:
         if dotExtention:
             self.extention = dotExtention[1:]
 
-    def isFile(self):
+    def isFolder(self):
         if self.extention:
-            return True
-        return False
+            return False
+        return True
 
     def getExtention(self):
         return self.extention
@@ -23,20 +23,20 @@ class file:
 
 class fileOrganiser:
     def __init__(self):
-        self.targetDirectory = input('\nEnter target directory: ')
-        os.chdir(self.targetDirectory)
+        targetDirectory = input('\nEnter target directory: ')
+        os.chdir(targetDirectory)
 
     def getFiles(self):
-        self.files = os.listdir()
-        return self.files
+        files = os.listdir()
+        return files
 
     def iterate(self):
         allFiles = self.getFiles()
         for aFile in allFiles:
             aFile = file(aFile)
-            if aFile.isFile():
+            if not aFile.isFolder():
                 print(aFile.getName(), aFile.getExtention())
 
 
-run = fileOrganiser()
-print(run.iterate())
+Organiser = fileOrganiser()
+print(Organiser.iterate())
