@@ -29,14 +29,31 @@ class fileOrganiser:
     def getFiles(self):
         files = os.listdir()
         return files
+    
+    def getFolderName(self,extention):
+        return extention
+
+    def createDir(self, folderName):
+        try:
+            os.mkdir(folderName)
+            print("New directory '" + folderName + "' is created")
+        except Exception:
+            pass
+
+    def moveFile(self, aFile, toFolder):
+        shutil.move(aFile, toFolder)
+        print(aFile + ' is moved to ' + toFolder)
 
     def iterate(self):
         allFiles = self.getFiles()
         for aFile in allFiles:
-            aFile = file(aFile)
-            if not aFile.isFolder():
-                print(aFile.getName(), aFile.getExtention())
-
+            currentFile = file(aFile)
+            if not currentFile.isFolder():
+                name = currentFile.getName()
+                extention = currentFile.getExtention()
+                folderName = self.getFolderName(extention)
+                self.createDir(folderName)
+                self.moveFile(aFile,folderName)
 
 Organiser = fileOrganiser()
 print(Organiser.iterate())
