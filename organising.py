@@ -37,16 +37,16 @@ class FileOrganiser:
     def createDir(self, folderName):
         try:
             os.mkdir(folderName)
-            print(colored("New directory '" + folderName + "' is created",'blue'))
+            print(colored("New directory '{}' is created".format(folderName), 'blue'))
         except Exception:
             pass
 
     def moveFile(self, aFile, toFolder):
         try:
             shutil.move(aFile, toFolder)
-            print(colored(aFile + ' is moved to ' + toFolder,'green'))
+            print(colored("'{}' is moved to '{}'".format(aFile,toFolder), 'green'))
         except Exception:
-            print(colored("ERROR in moving file " + aFile, 'red'))
+            print(colored("ERROR in moving file '{}'".format(aFile), 'red'))
 
     def iterate(self):
         allFiles = self.getFiles()
