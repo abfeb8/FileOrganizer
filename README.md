@@ -1,15 +1,18 @@
 # FileOrganizer
 Thise script will organise all the different file types of *Target* directory into sub folders.
 
+### Prerequisits
+* Python 3.X and above.
+
 ### Steps
 * Run the script
 * Enter the directory you want to organise
 * Voila You Are Done!! 
 
-### Before
+#### Before
 <img align="left" alt="Unorganized" width="350px" src="data/Images/Screenshot 2020-11-02 211705.png"/>
 
 <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
 
-### After
+#### After
 <img align="" alt="Organized" width="350px" src="data/Images/Screenshot 2020-11-02 211957.png"/>
