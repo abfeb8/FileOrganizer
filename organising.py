@@ -1,8 +1,9 @@
 import os
 import shutil
+from termcolor import colored
 
 
-class file:
+class File:
     def __init__(self, aFile):
         self.name, dotExtention = os.path.splitext(aFile)
         self.extention = None
@@ -21,7 +22,7 @@ class file:
         return self.name
 
 
-class fileOrganiser:
+class FileOrganiser:
     def __init__(self):
         targetDirectory = input('\nEnter target directory: ')
         os.chdir(targetDirectory)
@@ -29,31 +30,36 @@ class fileOrganiser:
     def getFiles(self):
         files = os.listdir()
         return files
-    
-    def getFolderName(self,extention):
+
+    def getFolderName(self, extention):
         return extention
 
     def createDir(self, folderName):
         try:
             os.mkdir(folderName)
-            print("New directory '" + folderName + "' is created")
+            print(colored("New directory '" + folderName + "' is created",'blue'))
         except Exception:
             pass
 
     def moveFile(self, aFile, toFolder):
-        shutil.move(aFile, toFolder)
-        print(aFile + ' is moved to ' + toFolder)
+        try:
+            shutil.move(aFile, toFolder)
+            print(colored(aFile + ' is moved to ' + toFolder,'green'))
+        except Exception:
+            print(colored("ERROR in moving file " + aFile, 'red'))
 
     def iterate(self):
         allFiles = self.getFiles()
         for aFile in allFiles:
-            currentFile = file(aFile)
+            currentFile = File(aFile)
             if not currentFile.isFolder():
                 name = currentFile.getName()
                 extention = currentFile.getExtention()
                 folderName = self.getFolderName(extention)
                 self.createDir(folderName)
-                self.moveFile(aFile,folderName)
+                self.moveFile(aFile, folderName)
 
-Organiser = fileOrganiser()
-print(Organiser.iterate())
+
+if __name__ == "__main__":
+    Organiser = FileOrganiser()
+    Organiser.iterate()
